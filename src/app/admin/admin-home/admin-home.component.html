@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <table class="bg-container">
+    <thead>
+      <tr>
+        <th>User Id</th>
+        <th>User Name</th>
+        <th>User Role</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userList">
+        <td>{{ user.userid }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.userRole }}</td>
+        <td>
+          <div class="action-buttons">
+            <button (click)="onView(user.userid)"><i class="fa-regular fa-eye"></i></button>
+            <button (click)="onEdit(user.userid)"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button (click)="onDelete(user.userid)"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

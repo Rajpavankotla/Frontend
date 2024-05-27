@@ -1,0 +1,35 @@
+<app-project-manager-navbar></app-project-manager-navbar>
+<h2 class="text-center">Client Information</h2>
+<div class="container">
+    <table class="bg-container">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>  
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <ng-container *ngIf="isEditing !== client.id; else editMode">
+            <td>{{ client.id }}</td>
+            <td>{{ client.name }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.phone }}</td>    
+          </ng-container>
+          <ng-template #editMode>
+            <td>{{ client.id }}</td>
+            <td><input type="text" [(ngModel)]="client.name" name="editName"></td>
+            <td><input type="email" [(ngModel)]="client.email" name="editEmail"></td>
+            <td><input type="tel" [(ngModel)]="client.phone" name="editPhone"></td>
+            <td>
+              <button (click)="saveChanges(client)">Save</button>
+              <button (click)="cancelEditing()">Cancel</button>
+            </td>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
